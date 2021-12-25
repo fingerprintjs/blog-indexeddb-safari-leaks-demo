@@ -2,6 +2,8 @@ import { renderGoogleProfilePhotos, fetchGoogleID } from './google'
 import { HTML, TEMPLATE, appendSection, replaceSection } from './templates'
 import { KNOWN_WEBSITES, GOOGLE_ID_PATTERNS } from './config'
 
+const TERMS_ACCEPTED_KEY = 'accepted-terms'
+
 async function getLeakedDatabases() {
   return indexedDB.databases().then((dbs) => Array.from(new Set(dbs.map((db) => db.name))))
 }
@@ -17,26 +19,23 @@ export function initialize() {
     HTML.SUPPORTED_WEBSITES,
   )
 
-  const terms = document.getElementById(HTML.TERMS)
-
   if (!supported) {
     appendSection(TEMPLATE.UNSUPPORTED_BROWSER)
-    terms.remove()
 
     return
   }
 
-  if (localStorage.getItem('accept-terms') != 'accepted') {
+  if (!localStorage.getItem(TERMS_ACCEPTED_KEY)) {
+    appendSection(TEMPLATE.SHOW_TERMS, { sectionId: HTML.TERMS, actionId: HTML.ACCEPT_TERMS })
     document.getElementById(HTML.ACCEPT_TERMS).addEventListener('click', () => {
-      localStorage.setItem('accept-terms', 'accepted')
-      terms.remove()
+      localStorage.setItem(TERMS_ACCEPTED_KEY, true)
+      document.getElementById(HTML.TERMS).remove()
       startDemo()
     })
 
     return
   }
 
-  terms.remove()
   startDemo()
 }
 

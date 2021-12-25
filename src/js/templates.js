@@ -1,6 +1,7 @@
 import { render } from 'Mustache'
 
 export const TEMPLATE = {
+  SHOW_TERMS: 'show-terms',
   SUPPORTED_WEBSITES: 'supported-website-links',
   UNSUPPORTED_BROWSER: 'unsupported-browser',
   SUPPORTED_BROWSER: 'supported-browser',
