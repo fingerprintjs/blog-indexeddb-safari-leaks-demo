@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Safari 15 IndexedDB Leaks Demo Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&family=Fira+Mono:wght@700" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <section>
+            <svg class="logo" viewBox="0 0 61 63" xmlns="http://www.w3.org/2000/svg" aria-label="FingeprintJS logo">
+                <path d="M49.627 7.8a1.62 1.62 0 01-.78-.2 41.29 41.29 0 00-37.29 0 1.75 1.75 0 01-2.28-.63 1.54 1.54 0 01.66-2.13 44.88 44.88 0 0140.45-.05 1.51 1.51 0 01.7 2.13 1.68 1.68 0 01-1.46.88zM1.707 24.37a1.86 1.86 0 01-1-.29 1.52 1.52 0 01-.4-2.2 34.23 34.23 0 0112.58-10.32 40.78 40.78 0 0134.52 0 34.28 34.28 0 0112.56 10.22 1.53 1.53 0 01-.41 2.21 1.74 1.74 0 01-2.34-.43 31.06 31.06 0 00-11.35-9.27 37.2 37.2 0 00-31.47 0 31.26 31.26 0 00-11.37 9.41 1.48 1.48 0 01-1.31.67zm20.93 38.09a1.65 1.65 0 01-1.18-.48 31.66 31.66 0 01-6.72-8.33 26.64 26.64 0 01-3.52-13.69c0-9.37 8.5-17 19-17s18.9 7.6 18.9 17a1.68 1.68 0 01-3.36 0c0-7.65-7-13.87-15.58-13.87s-15.61 6.22-15.61 13.87a23.57 23.57 0 003.11 12.14 29.64 29.64 0 006.2 7.63 1.56 1.56 0 010 2.25 2 2 0 01-1.24.48zm24-5.85a18.86 18.86 0 01-10.38-2.8 16.55 16.55 0 01-8-13.85 1.67 1.67 0 013.34 0 13.39 13.39 0 006.53 11.23 15.37 15.37 0 008.51 2.24 23.94 23.94 0 003.48-.31 1.67 1.67 0 012 1.29 1.59 1.59 0 01-1.38 1.83 25 25 0 01-4 .37zm-6.72 6.51a1.5 1.5 0 01-.44-.07 26.52 26.52 0 01-12.45-6.61 22.44 22.44 0 01-7.28-16.48c0-5.11 4.63-9.29 10.32-9.29s10.31 4.18 10.31 9.29c0 3.36 3.11 6.12 7 6.12s7-2.76 7-6.12c0-11.91-10.89-21.56-24.27-21.56-9.51 0-18.22 5-22.14 12.72a19.37 19.37 0 00-2 8.84 29.57 29.57 0 002.25 11.39 1.53 1.53 0 01-1 2 1.7 1.7 0 01-2.19-.9 33.61 33.61 0 01-2.41-12.49 22.47 22.47 0 012.27-10.23c4.45-8.8 14.33-14.51 25.14-14.51 15.23 0 27.61 11.07 27.61 24.71 0 5.11-4.61 9.27-10.31 9.27s-10.3-4.16-10.3-9.27c0-3.38-3.12-6.12-7-6.12s-7 2.74-7 6.12a19.27 19.27 0 006.34 14.23 23.11 23.11 0 0010.94 5.83 1.57 1.57 0 011.18 1.92 1.64 1.64 0 01-1.57 1.21zm0 0" fill="#f24405"></path>
+            </svg>
+        </section>
+        <h1>Safari 15 IndexedDB Leaks</h1>
+        <div id="content-sections"></div>
+        <section id="terms">
+            <div class="button" id="accept-terms">Start demo</div>
+            <div>
+                <small>By clicking the button I agree to the <a href="terms.html">terms of service</a>.</small>
+            </div>
+        </section>
+        <section class="faq">
+            <h1>What is this all about?</h1>
+                <p>This demo showcases information leaks resulting from an <a href="https://fingerprintjs.com/blog" target="_blank">IndexedDB same-origin policy violation</a> in <a href="https://webkit.org/">WebKit</a> (a browser engine primarly used in Safari, as well as all iOS and iPadOS web browsers).</p>
+                <p>It shows that arbitrary websites can learn a visitor's recent and current browsing activity (pages visited in differnt tabs or windows). The demo supports the following webpages:
+                    <span id="supported-websites"></span>
+                </p>
+                <p>For authenticated visitors the demo can leak Google User IDs and profile pictures (if set).</p>
+                <p>The supported browsers are Safari 15 on MacOS, and all browsers on iOS and iPadOS 15. Other browsers and platforms are not affected.</p>
+        </section>
+        <section class="footer">
+            <span><a href="https://fingerprintjs.com/"><strong>FingerprintJS</strong></a></span>
+            <span><a href="https://github.com/fingerprintjs/"><strong>Source Code</strong></a></span>
+            <span><a href="https://fingerprintjs.com/blog"><strong>Article</strong></a></span>
+        </section>
+    </div>
+
+<template id="unsupported-browser">
+    <section>
+        Good news, your current browser is not affected!
+    </section>
+</template>
+<template id="supported-browser">
+    <section>
+        {{^databases}}
+        Your browser currently doesn't leak any database names. Browse to a supported website (see below) and <a href="#" id="{{onclickFunctionId}}">refresh</a> this page to see the leaks in action. 
+        {{/databases}}
+        {{#databases}}
+        Your browser currently leaks <strong>{{databases.entries.length}}</strong> database name{{#plural}}s{{/plural}}. <a href="#" id="{{onclickFunctionId}}">Refresh.</a>
+        {{/databases}}
+        {{#websites}}
+        <div class="subsection">These are some of the websites from your recent browsing activity:
+            {{#websites.entries}}
+            <div><strong>{{.}}</strong></div>
+            {{/websites.entries}}
+        </div>
+        {{/websites}}
+    </section>
+</template>
+<template id="google-ids">
+    {{#unauthenticated}}
+    <section>
+        You are not logged in with any Google account.
+    </section>
+    {{/unauthenticated}}
+    {{^unauthenticated}}
+    <section id="{{sectionId}}"> 
+        {{^ids}}      
+        You can also test for Google User ID leaks. <a href="#" id="{{onclickFunctionId}}">Try it.</a>
+        {{/ids}}
+        {{#ids}}
+        Your unique Google User ID{{#plural}}s{{/plural}}:
+        {{#ids.entries}}
+        <div><strong>{{.}}</strong></div>
+        {{/ids.entries}}
+        {{/ids}}
+    </section>
+    {{/unauthenticated}}
+</template>
+<template id="google-photos">
+    <div class="subsection">
+        {{#photos}}
+        <img src="https://{{.}}" class="profile"></img>
+        {{/photos}}
+    </div>
+</template>
+<template id="supported-website-links">
+    <div class="websites">
+        {{#websites}}
+        <span><a href="https://{{.}}" class="button" target="_blank">{{.}}</a></span>
+        {{/websites}}
+    </div>
+</template>
+
+<script type="module" src="js/main.js"></script>
+</body>
