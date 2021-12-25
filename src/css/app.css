@@ -95,7 +95,3 @@ a.button {
 a.button:hover {
     background-color: #e2e2ee;
 }
-.faq .websites span:not(:last-of-type)::after {
-    content: " ";
-    padding: 0rem 0.2rem;     
-}
