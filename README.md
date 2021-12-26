@@ -2,10 +2,9 @@
 
 ## Description
 
-This demo showcases information leaks resulting from an [IndexedDB same-origin policy violation](https://fingerprintjs.com/blog) in [WebKit](https://webkit.org/) (a browser engine primarly used in Safari, as well as all iOS and iPadOS web browsers)
+This demo showcases information leaks resulting from an [IndexedDB same-origin policy violation](https://fingerprintjs.com/blog) in [WebKit](https://webkit.org/) (a browser engine primarily used in Safari, as well as all iOS and iPadOS web browsers).
 
-
-It shows that arbitrary websites can learn a visitor's recent and current browsing activity (pages visited in differnt tabs or windows).
+It shows that arbitrary websites can learn a visitor's recent and current browsing activity (pages visited in different tabs or windows).
 
 For authenticated visitors the demo can leak Google User IDs and profile pictures (if set).
 
@@ -17,8 +16,7 @@ Read the [article](https://fingerprintjs.com/blog) for more information.
 
 You need to install [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/) to run the application.
 
-To fetch Google profile pictures as part of the demo, you'll need to provide an [People API key](https://developers.google.com/people/v1/how-tos/authorizing#APIKey). 
-Rename the `.env.example` file to `.env`, open `.env` and add a valid key.
+To fetch Google profile pictures as part of the demo, you'll need to provide an [People API key](https://developers.google.com/people/v1/how-tos/authorizing#APIKey). To do that, rename the `.env.example` file to `.env`, open `.env` and add a valid key.
 
 Open this directory in a terminal and run:
 
@@ -27,9 +25,9 @@ yarn install
 yarn start
 ```
 
-Then open the application in a browser: http://localhost:1234. 
+Then open the application at http://localhost:1234. 
 
-Use ESLint to check your code style:
+We use `eslint` to check the code style:
 
 ```bash
 yarn lint
