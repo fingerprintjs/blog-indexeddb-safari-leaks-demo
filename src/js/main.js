@@ -10,8 +10,9 @@ async function getLeakedDatabases() {
 
 export function initialize() {
   const ios = navigator.userAgent.includes('iPhone OS 15')
+  const ipad = navigator.userAgent.includes('iPad; CPU OS 15')
   const macos = navigator.userAgent.includes('Macintosh') && navigator.userAgent.includes('Version/15')
-  const supported = ios || macos
+  const supported = ios || ipad || macos
 
   replaceSection(
     TEMPLATE.SUPPORTED_WEBSITES,
