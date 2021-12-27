@@ -1,4 +1,4 @@
-import { appendSection, HTML, TEMPLATE, replaceSection } from './templates'
+import { appendSection, createTooltip, GOOGLE_TOOLTIP_TEXT, HTML, replaceSection, TEMPLATE } from './templates'
 
 export async function renderGoogleProfilePhotos(ids) {
   let photos = []
@@ -62,9 +62,15 @@ export function fetchGoogleID(e) {
     if (ids && ids.length > 0) {
       replaceSection(
         TEMPLATE.GOOGLE_IDS,
-        { ids: { entries: ids }, plural: ids.length > 1, sectionId: HTML.GOOGLE_RESULT },
+        {
+          ids: { entries: ids },
+          plural: ids.length > 1,
+          sectionId: HTML.GOOGLE_RESULT,
+          tooltipId: HTML.GOOGLE_TOOLTIP,
+        },
         HTML.GOOGLE_RESULT,
       )
+      createTooltip(HTML.GOOGLE_TOOLTIP, GOOGLE_TOOLTIP_TEXT)
     } else {
       replaceSection(TEMPLATE.GOOGLE_IDS, { unauthenticated: true }, HTML.GOOGLE_RESULT)
     }

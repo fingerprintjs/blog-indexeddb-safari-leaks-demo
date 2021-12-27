@@ -97,4 +97,8 @@ a.button:hover {
 }
 .tooltip-icon {
     cursor: pointer;
+    height: auto;
+    padding-bottom: 3px;
+    vertical-align: middle;
+    width: 0.8rem;
 }

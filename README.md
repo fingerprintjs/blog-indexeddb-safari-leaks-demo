@@ -8,7 +8,7 @@ It shows that arbitrary websites can learn a visitor's recent and current browsi
 
 For authenticated visitors the demo can leak Google User IDs and profile pictures (if set).
 
-The supported browsers are Safari 15 on MacOS, and all browsers on iOS and iPadOS 15. Other browsers and platforms are not affected.
+The supported browsers are Safari 15 on macOS, and all browsers on iOS and iPadOS 15. Other browsers and platforms are not affected.
 
 Read the [article](https://fingerprintjs.com/blog) for more information.
 
@@ -24,8 +24,6 @@ Open this directory in a terminal and run:
 yarn install
 yarn start
 ```
-
-Then open the application at http://localhost:1234. 
 
 We use `eslint` to check the code style:
 

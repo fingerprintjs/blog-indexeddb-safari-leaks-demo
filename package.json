@@ -3,7 +3,7 @@
   "license": "MIT",
   "source": "src/index.html",
   "scripts": {
-    "start": "rimraf dist && parcel --no-source-maps",
+    "start": "rimraf dist && parcel --no-source-maps --open",
     "build": "rimraf dist && parcel build --public-url ./ --no-source-maps",
     "lint": "eslint --ext .js,.html --ignore-path .gitignore --max-warnings 0 .",
     "lint:fix": "yarn lint --fix"

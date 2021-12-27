@@ -1,9 +1,6 @@
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
-
-import { renderGoogleProfilePhotos, fetchGoogleID } from './google'
-import { HTML, TEMPLATE, appendSection, replaceSection } from './templates'
-import { KNOWN_WEBSITES, GOOGLE_ID_PATTERNS } from './config'
+import { fetchGoogleID, renderGoogleProfilePhotos  } from './google'
+import { appendSection, createTooltip, GOOGLE_TOOLTIP_TEXT, HTML, replaceSection, TEMPLATE } from './templates'
+import { GOOGLE_ID_PATTERNS, KNOWN_WEBSITES } from './config'
 
 const TERMS_ACCEPTED_KEY = 'accepted-terms'
 
@@ -72,7 +69,7 @@ function startDemo(event) {
     const leaks = {
       databases: databases.length > 0 ? { entries: databases } : undefined,
       onclickFunctionId: HTML.NO_LEAKS_REFRESH,
-      tooltipId: HTML.TOOLTIP,
+      tooltipId: HTML.DATABASES_TOOLTIP,
       plural: databases.length > 1,
       websites: websites.size !== 0 ? { entries: Array.from(websites) } : undefined,
     }
@@ -81,21 +78,20 @@ function startDemo(event) {
       ids: ids.size !== 0 ? { entries: Array.from(ids) } : undefined,
       plural: ids.size > 1,
       sectionId: HTML.GOOGLE_RESULT,
+      tooltipId: HTML.GOOGLE_TOOLTIP,
       event: !!event,
       onclickFunctionId: HTML.FETCH_GOOGLE_RESULT,
     }
 
     appendSection(TEMPLATE.SUPPORTED_BROWSER, leaks)
+    createTooltip(HTML.DATABASES_TOOLTIP, `List of databases: ${databases.join(', ')}`)
     document.getElementById(HTML.NO_LEAKS_REFRESH)?.addEventListener('click', (e) => {
       e.preventDefault()
       window.location.reload()
     })
-    tippy(`#${HTML.TOOLTIP}`, {
-      content: databases.join(', '),
-      theme: 'light',
-    })
 
     appendSection(TEMPLATE.GOOGLE_IDS, google)
+    createTooltip(HTML.GOOGLE_TOOLTIP, GOOGLE_TOOLTIP_TEXT)
     if (ids.size !== 0 && !event) {
       // Do this separately as it involves fetching network resources.
       renderGoogleProfilePhotos(Array.from(ids))
