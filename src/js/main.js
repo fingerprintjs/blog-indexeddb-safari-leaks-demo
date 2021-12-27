@@ -96,7 +96,7 @@ function startDemo(event) {
     })
 
     appendSection(TEMPLATE.GOOGLE_IDS, google)
-    if (ids.size !== 0) {
+    if (ids.size !== 0 && !event) {
       // Do this separately as it involves fetching network resources.
       renderGoogleProfilePhotos(Array.from(ids))
     } else {
