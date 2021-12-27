@@ -17,6 +17,7 @@ export const HTML = {
   GOOGLE_RESULT: 'google-result',
   FETCH_GOOGLE_RESULT: 'fetch-google-id',
   NO_LEAKS_REFRESH: 'no-leaks-refresh',
+  TOOLTIP: 'databases-tooltip',
 }
 
 export function appendSection(identifier, view) {

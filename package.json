@@ -19,6 +19,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "mustache": "^4.2.0"
+    "mustache": "^4.2.0",
+    "tippy.js": "^6.3.7"
   }
 }

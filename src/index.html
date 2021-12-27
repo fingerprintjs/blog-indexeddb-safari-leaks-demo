@@ -51,7 +51,7 @@
         Your browser currently doesn't leak any database names. Browse to a supported website (see below) and <a href="#" id="{{onclickFunctionId}}">refresh</a> this page to see the leaks in action. 
         {{/databases}}
         {{#databases}}
-        Your browser currently leaks <strong>{{databases.entries.length}}</strong> database name{{#plural}}s{{/plural}}. <a href="#" id="{{onclickFunctionId}}">Refresh.</a>
+        Your browser currently leaks <strong class="tooltip-icon" id="{{tooltipId}}">{{databases.entries.length}}</strong> database name{{#plural}}s{{/plural}}. <a href="#" id="{{onclickFunctionId}}">Refresh.</a>
         {{/databases}}
         {{#websites}}
         <div class="subsection">These are some of the websites from your recent browsing activity:
@@ -70,8 +70,13 @@
     {{/unauthenticated}}
     {{^unauthenticated}}
     <section id="{{sectionId}}"> 
-        {{^ids}}      
-        You can also test for Google User ID leaks. <a href="#" id="{{onclickFunctionId}}">Try it.</a>
+        {{^ids}}
+            {{^event}}      
+            You can also test for Google User ID leaks. <a href="#" id="{{onclickFunctionId}}">Try it.</a>
+            {{/event}}
+            {{#event}}
+            Looking for Google User IDs...
+            {{/event}}
         {{/ids}}
         {{#ids}}
         Your unique Google User ID{{#plural}}s{{/plural}}:

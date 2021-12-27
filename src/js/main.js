@@ -1,3 +1,6 @@
+import tippy from 'tippy.js'
+import 'tippy.js/dist/tippy.css'
+
 import { renderGoogleProfilePhotos, fetchGoogleID } from './google'
 import { HTML, TEMPLATE, appendSection, replaceSection } from './templates'
 import { KNOWN_WEBSITES, GOOGLE_ID_PATTERNS } from './config'
@@ -28,10 +31,10 @@ export function initialize() {
 
   if (!localStorage.getItem(TERMS_ACCEPTED_KEY)) {
     appendSection(TEMPLATE.SHOW_TERMS, { sectionId: HTML.TERMS, actionId: HTML.ACCEPT_TERMS })
-    document.getElementById(HTML.ACCEPT_TERMS).addEventListener('click', () => {
+    document.getElementById(HTML.ACCEPT_TERMS).addEventListener('click', (e) => {
       localStorage.setItem(TERMS_ACCEPTED_KEY, true)
       document.getElementById(HTML.TERMS).remove()
-      startDemo()
+      startDemo(e)
     })
 
     return
@@ -40,7 +43,7 @@ export function initialize() {
   startDemo()
 }
 
-function startDemo() {
+function startDemo(event) {
   getLeakedDatabases().then((databases) => {
     const ids = new Set()
     const websites = new Set()
@@ -69,6 +72,7 @@ function startDemo() {
     const leaks = {
       databases: databases.length > 0 ? { entries: databases } : undefined,
       onclickFunctionId: HTML.NO_LEAKS_REFRESH,
+      tooltipId: HTML.TOOLTIP,
       plural: databases.length > 1,
       websites: websites.size !== 0 ? { entries: Array.from(websites) } : undefined,
     }
@@ -77,6 +81,7 @@ function startDemo() {
       ids: ids.size !== 0 ? { entries: Array.from(ids) } : undefined,
       plural: ids.size > 1,
       sectionId: HTML.GOOGLE_RESULT,
+      event: !!event,
       onclickFunctionId: HTML.FETCH_GOOGLE_RESULT,
     }
 
@@ -85,15 +90,26 @@ function startDemo() {
       e.preventDefault()
       window.location.reload()
     })
+    tippy(`#${HTML.TOOLTIP}`, {
+      content: databases.join(', '),
+      theme: 'light',
+    })
 
     appendSection(TEMPLATE.GOOGLE_IDS, google)
     if (ids.size !== 0) {
       // Do this separately as it involves fetching network resources.
       renderGoogleProfilePhotos(Array.from(ids))
     } else {
-      document.getElementById(HTML.FETCH_GOOGLE_RESULT).addEventListener('click', fetchGoogleID)
+      const result = document.getElementById(HTML.FETCH_GOOGLE_RESULT)
+      if (result) {
+        document.getElementById(HTML.FETCH_GOOGLE_RESULT).addEventListener('click', fetchGoogleID)
+      }
     }
   })
+
+  if (event) {
+    fetchGoogleID(event)
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initialize(), false)

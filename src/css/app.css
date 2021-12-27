@@ -95,3 +95,6 @@ a.button {
 a.button:hover {
     background-color: #e2e2ee;
 }
+.tooltip-icon {
+    cursor: pointer;
+}

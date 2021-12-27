@@ -29,7 +29,10 @@ export async function renderGoogleProfilePhotos(ids) {
 export function fetchGoogleID(e) {
   e && e.preventDefault && e.preventDefault()
 
-  document.getElementById(HTML.GOOGLE_RESULT).innerText = `This might take up to 5 seconds...`
+  const result = document.getElementById(HTML.GOOGLE_RESULT)
+  if (result) {
+    document.getElementById(HTML.GOOGLE_RESULT).innerText = `This might take up to 5 seconds...`
+  }
 
   const query = setInterval(async function () {
     const databases = await indexedDB.databases()
