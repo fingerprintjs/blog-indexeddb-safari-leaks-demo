@@ -1,25 +1,30 @@
 {
   "name": "blog-indexeddb-safari-leaks-demo",
   "license": "MIT",
-  "source": "src/index.html",
+  "source": "src/public/index.html",
   "scripts": {
     "start": "rimraf dist && parcel --no-source-maps --open",
     "build": "rimraf dist && parcel build --public-url ./ --no-source-maps",
-    "lint": "eslint --ext .js,.html --ignore-path .gitignore --max-warnings 0 .",
+    "lint": "eslint --ext .jsx,.html --ignore-path .gitignore --max-warnings 0 .",
     "lint:fix": "yarn lint --fix"
   },
   "devDependencies": {
     "@types/mustache": "^4.1.2",
+    "@types/react-dom": "^17.0.11",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "parcel": "^2.0.1",
     "prettier": "^2.5.1",
+    "prop-types": "^15.8.0",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "mustache": "^4.2.0",
-    "tippy.js": "^6.3.7"
+    "@tippyjs/react": "^4.2.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1"
   }
 }
