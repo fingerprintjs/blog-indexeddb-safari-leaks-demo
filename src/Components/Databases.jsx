@@ -31,17 +31,17 @@ function getKnownWebsites(databases) {
   return Array.from(websites)
 }
 
-export default function Databases({ googleIDs, clickEvent }) {
+export default function Databases({ googleIDs, isLoading }) {
   const [databases, setDatabases] = useState([])
   const [websites, setWebsites] = useState([])
 
   useEffect(() => {
-    const poll = setTimeout(() => checkLeaks(), 1000)
+    const poll = setInterval(() => checkLeaks(), 1000)
 
     return () => {
-      clearTimeout(poll)
+      clearInterval(poll)
     }
-  }, [databases])
+  }, [])
 
   const checkLeaks = async () => {
     const dbs = await getLeakedDatabases()
@@ -50,18 +50,14 @@ export default function Databases({ googleIDs, clickEvent }) {
     setWebsites(getKnownWebsites(dbs))
   }
 
-  if (databases?.length === 0) {
-    return (
-      <>
-        <section>
-          Browse to a supported website (see below) and come back to this page to see database name leaks in action.
-        </section>
-        <Identifiers databases={[]} initialGoogleIDs={googleIDs} clickEvent={clickEvent} />
-      </>
-    )
-  }
-
-  return (
+  return databases?.length === 0 ? (
+    <>
+      <section>
+        Browse to a supported website (see below) and come back to this page to see database name leaks in action.
+      </section>
+      <Identifiers databases={[]} initialGoogleIDs={googleIDs} isLoading={isLoading} />
+    </>
+  ) : (
     <>
       <section>
         <div>
@@ -77,14 +73,14 @@ export default function Databases({ googleIDs, clickEvent }) {
           </div>
         )}
       </section>
-      <Identifiers databases={databases} initialGoogleIDs={googleIDs} clickEvent={clickEvent} />
+      <Identifiers databases={databases} initialGoogleIDs={googleIDs} isLoading={isLoading} />
     </>
   )
 }
 
 Databases.propTypes = {
   googleIDs: PropTypes.array,
-  clickEvent: PropTypes.bool,
+  isLoading: PropTypes.bool,
 }
 
 function Website(props) {

@@ -54,10 +54,18 @@ export async function fetchGoogleIDs() {
   }
 }
 
-export default function Identifiers({ databases, initialGoogleIDs, clickEvent }) {
-  const [forcedGoogleIDs, setForcedGoogleIDs] = useState([])
+export default function Identifiers({ databases, initialGoogleIDs, isLoading }) {
+  const [googleIDs, setGoogleIDs] = useState(new Set())
   const [loading, setLoading] = useState(false)
-  const [unauthenticated, setUnauthenticated] = useState(false)
+  const [forcedLeakFailed, setForcedLeakFailed] = useState(false)
+
+  const updateGoogleIDs = (ids) => {
+    const updated = new Set([...googleIDs, ...ids])
+
+    if (!(updated.size === googleIDs.size && [...updated].every((value) => googleIDs.has(value)))) {
+      setGoogleIDs(updated)
+    }
+  }
 
   const checkGoogleIDs = () => {
     const ids = new Set()
@@ -73,36 +81,42 @@ export default function Identifiers({ databases, initialGoogleIDs, clickEvent })
   }
 
   useEffect(() => {
-    if (forcedGoogleIDs.length !== 0) {
-      return
+    setLoading(isLoading)
+  }, [isLoading])
+
+  useEffect(() => {
+    // If initialGoogleIDs isn't null, we tried to force leaks but couldn't get any id.
+    if (initialGoogleIDs) {
+      initialGoogleIDs.length > 0 ? updateGoogleIDs(initialGoogleIDs) : setForcedLeakFailed(true)
     }
-    setForcedGoogleIDs(checkGoogleIDs(databases))
+  }, [initialGoogleIDs])
+
+  useEffect(() => {
+    updateGoogleIDs(checkGoogleIDs(databases))
   }, [databases])
 
   const forceGoogleIDLeak = async (e) => {
     e.preventDefault()
 
     setLoading(true)
-    setUnauthenticated(false)
+    setForcedLeakFailed(false)
 
     const ids = await fetchGoogleIDs()
 
     if (ids?.length > 0) {
-      setForcedGoogleIDs(ids)
+      updateGoogleIDs(ids)
     } else {
-      setUnauthenticated(true)
+      setForcedLeakFailed(true)
     }
 
     setLoading(false)
   }
 
-  let ids = []
-
-  if (loading || clickEvent) {
+  if (loading) {
     return <>Looking for Google User IDs...</>
   }
 
-  if (unauthenticated) {
+  if (forcedLeakFailed && googleIDs.size === 0) {
     return (
       <section>
         You are not logged in with any Google account.{' '}
@@ -113,32 +127,17 @@ export default function Identifiers({ databases, initialGoogleIDs, clickEvent })
     )
   }
 
-  // If we have initial Google IDs, we already tried to force a leak.
-  if (initialGoogleIDs) {
-    if (initialGoogleIDs.length === 0) {
-      setUnauthenticated(true)
-    } else {
-      ids = initialGoogleIDs
-    }
-  } else {
-    ids = forcedGoogleIDs
-  }
-
-  if (ids?.length > 0) {
-    return (
-      <>
-        <section>
-          Your unique Google User ID{`${ids.length > 1}` ? 's' : ''}: <Tooltip content={GOOGLE_TOOLTIP_TEXT} />
-          {ids.map((id) => {
-            return <GoogleID key={id} googleid={id} />
-          })}
-        </section>
-        <Photos ids={ids} />
-      </>
-    )
-  }
-
-  return (
+  return googleIDs?.size > 0 ? (
+    <>
+      <section>
+        Your unique Google User ID{`${googleIDs.size > 1}` ? 's' : ''}: <Tooltip content={GOOGLE_TOOLTIP_TEXT} />
+        {Array.from(googleIDs).map((id) => {
+          return <GoogleID key={id} googleid={id} />
+        })}
+      </section>
+      <Photos ids={googleIDs} />
+    </>
+  ) : (
     <section>
       You can also test for Google User ID leaks.{' '}
       <a href="#" onClick={forceGoogleIDLeak}>
@@ -151,7 +150,7 @@ export default function Identifiers({ databases, initialGoogleIDs, clickEvent })
 Identifiers.propTypes = {
   databases: PropTypes.array,
   initialGoogleIDs: PropTypes.array,
-  clickEvent: PropTypes.bool,
+  isLoading: PropTypes.bool,
 }
 
 function GoogleID(props) {

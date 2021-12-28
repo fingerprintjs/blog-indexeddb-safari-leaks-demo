@@ -7,7 +7,7 @@ export default function Photos({ ids }) {
   const fetchGoogleProfilePhotos = async (ids) => {
     let photos = []
     Promise.all(
-      ids.map(async (id) => {
+      Array.from(ids).map(async (id) => {
         // eslint-disable-next-line no-undef
         const url = `https://people.googleapis.com/v1/people/${id}?personFields=photos&key=${process.env.PEOPLE_API_KEY}`
 
@@ -41,7 +41,7 @@ export default function Photos({ ids }) {
 }
 
 Photos.propTypes = {
-  ids: PropTypes.array,
+  ids: PropTypes.object, // Set
 }
 
 function Photo(props) {

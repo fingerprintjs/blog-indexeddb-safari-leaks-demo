@@ -7,21 +7,21 @@ import { fetchGoogleIDs } from './Google/Identifiers'
 
 const TERMS_ACCEPTED_KEY = 'accepted-terms'
 
-export default function Leaks({ supportedBrowser }) {
+export default function Leaks({ isSupportedBrowser }) {
   const [acceptedTerms, setAcceptedTerms] = useState(localStorage.getItem(TERMS_ACCEPTED_KEY))
-  const [googleIDs, setGoogleIDs] = useState()
-  const [clickEvent, setClickEvent] = useState(false)
+  const [googleIDs, setGoogleIDs] = useState(null)
+  const [isPopupActive, setPopupActive] = useState(false)
 
-  if (!supportedBrowser) {
+  if (!isSupportedBrowser) {
     return <Unsupported />
   }
 
   const acceptTerms = async () => {
     localStorage.setItem(TERMS_ACCEPTED_KEY, true)
-    setClickEvent(true)
     setAcceptedTerms(true)
+    setPopupActive(true)
     setGoogleIDs(await fetchGoogleIDs())
-    setClickEvent(false)
+    setPopupActive(false)
   }
 
   if (!acceptedTerms) {
@@ -39,7 +39,7 @@ export default function Leaks({ supportedBrowser }) {
     )
   }
 
-  return <Databases googleIDs={googleIDs} clickEvent={clickEvent} />
+  return <Databases googleIDs={googleIDs} isLoading={isPopupActive} />
 }
 
 function Unsupported() {
@@ -47,5 +47,5 @@ function Unsupported() {
 }
 
 Leaks.propTypes = {
-  supportedBrowser: PropTypes.bool,
+  isSupportedBrowser: PropTypes.bool,
 }
