@@ -5,6 +5,7 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:react/recommended",
         "plugin:prettier/recommended"
     ],
     "plugins": ["html"],
@@ -14,6 +15,12 @@
     },
     "rules": {
         "no-console": "warn",
-        "max-len": ["error", { "code": 120, "ignoreUrls": true }]
+        "max-len": ["error", { "code": 120, "ignoreUrls": true }],
+        "react/react-in-jsx-scope": "off" // Parcel does this automatically.
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }

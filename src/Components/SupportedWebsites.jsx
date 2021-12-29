@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 // Note that not all of these websites necessarily interact with IndexedDBs on every visit.
 // Some websites might skip their IndexedDB logic based on the UA or the visitor's region.
 
@@ -120,13 +122,26 @@ export const KNOWN_WEBSITES = {
   // }
 }
 
-export const GOOGLE_ID_PATTERNS = [
-  /offline.settings.(\d+)/, // calendar.google.com
-  /offline.requests.(\d+)/,
-  /Keep-(\d+)/, // keep.google.com
-  /LogsDatabaseV2:(\d+)\|\|/, // youtube.com
-  /PersistentEntityStoreDb:(\d+)\|\|/,
-  /yt-idb-pref-storage:(\d+)\|\|/,
-  /yt-it-response-store:(\d+)\|\|/,
-  /yt-player-local-media:(\d+)\|\|/,
-]
+export function SupportedWebsites() {
+  return (
+    <div className="websites">
+      {Object.getOwnPropertyNames(KNOWN_WEBSITES).map((website) => {
+        return <SupportedWebsite key={website} website={website} />
+      })}
+    </div>
+  )
+}
+
+function SupportedWebsite(props) {
+  return (
+    <span>
+      <a href={`https://${props.website}`} className="button" target="_blank" rel="noreferrer">
+        {props.website}
+      </a>
+    </span>
+  )
+}
+
+SupportedWebsite.propTypes = {
+  website: PropTypes.string,
+}
