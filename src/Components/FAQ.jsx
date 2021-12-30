@@ -3,7 +3,7 @@ import { SupportedWebsites } from './SupportedWebsites'
 export default function FAQ() {
   return (
     <section className="faq">
-      <h1>What is this all about?</h1>
+      <h1>What is this vulnerability and who is affected?</h1>
       <p>
         This demo showcases information leaks resulting from an{' '}
         <a href="https://fingerprintjs.com/blog" target="_blank" rel="noreferrer">
@@ -21,8 +21,9 @@ export default function FAQ() {
         pictures. The demo detects the following websites:
       </p>
       <SupportedWebsites />
+      <small>* Requires an authenticated session</small>
       <p>
-        The supported browsers are Safari 15 on macOS, and all browsers on iOS and iPadOS 15. Other browsers and
+        All users using Safari 15 on macOS, or any browser on iOS and iPadOS 15 are affected. Other browsers and
         platforms are not affected.
       </p>
     </section>

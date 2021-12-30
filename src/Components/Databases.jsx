@@ -53,7 +53,14 @@ export default function Databases({ googleIDs, isLoading }) {
   return databases?.length === 0 ? (
     <>
       <section>
-        Browse to a supported website (see below) and come back to this page to see database name leaks in action.
+        <p>
+          Click any URL below to open the affected website in a new tab. After that switch back to this tab, and you
+          will see that the visited website is leaking and its presence is known to this demo page.
+        </p>
+        <p>
+          In Private Safari windows, browse to affected websites within the same tab. After returning to this demo page,
+          you will see that your recent browsing history is leaking.
+        </p>
       </section>
       <Identifiers databases={[]} initialGoogleIDs={googleIDs} isLoading={isLoading} />
     </>

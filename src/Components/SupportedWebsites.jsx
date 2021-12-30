@@ -7,33 +7,40 @@ import PropTypes from 'prop-types'
 // This allows to identify websites based on multiple database names, if needed.
 export const KNOWN_WEBSITES = {
   'docs.google.com': {
-    exact: [['GoogleDocs'], ['GoogleDriveDs'], ['DocsErrors']],
+    exact: [['GoogleDocs'], ['DocsErrors'], ['GoogleDriveDs']],
+    authenticated: true,
   },
   'calendar.google.com': {
     exact: [['offline.users']],
     startswith: [['offline.settings.'], ['offline.requests.']],
+    authenticated: true,
   },
   'mail.google.com': {
     exact: [['user_registry'], ['gmail-sw-keyval']],
+    authenticated: true,
   },
-  'meet.google.com': {
-    exact: [['meet_db'], ['storage.bw.offline']],
-  },
+  //'meet.google.com': {
+  //  exact: [['meet_db'], ['storage.bw.offline']],
+  //  authenticated: true,
+  //},
   'drive.google.com': {
-    exact: [['GoogleDriveDsImpressions'], ['dfesw-mss-cache-prod']],
+    exact: [['GoogleDriveDsImpressions'], ['dfesw-mss-cache-prod'], ['GoogleDriveDs']],
     startswith: [['storage.dfesw-']],
+    authenticated: true,
   },
   'developers.google.com': {
     exact: [['devsite-index-db']],
   },
   'keep.google.com': {
     startswith: [['Keep-']],
+    authenticated: true,
   },
   'web.whatsapp.com': {
     exact: [['wawc'], ['__dbnames']],
   },
   'netflix.com': {
     exact: [['netflix.player']],
+    authenticated: true,
   },
   'youtube.com': {
     exact: [['yt-serviceworker-metadata']],
@@ -47,12 +54,14 @@ export const KNOWN_WEBSITES = {
   },
   'facebook.com': {
     exact: [['ServiceWorkerAsyncStorage']],
+    authenticated: true,
   },
   'instagram.com': {
     exact: [['redux']], // Likely unreliable.
   },
   'app.slack.com': {
     exact: [['reduxPersistence']],
+    authenticated: true,
   },
   'twitter.com': {
     exact: [['sync'], ['localforage'], ['horizonweb']],
@@ -126,7 +135,9 @@ export function SupportedWebsites() {
   return (
     <div className="websites">
       {Object.getOwnPropertyNames(KNOWN_WEBSITES).map((website) => {
-        return <SupportedWebsite key={website} website={website} />
+        return (
+          <SupportedWebsite key={website} website={website} authenticated={KNOWN_WEBSITES[website].authenticated} />
+        )
       })}
     </div>
   )
@@ -137,6 +148,7 @@ function SupportedWebsite(props) {
     <span>
       <a href={`https://${props.website}`} className="button" target="_blank" rel="noreferrer">
         {props.website}
+        {props.authenticated ? '*' : ''}
       </a>
     </span>
   )
@@ -144,4 +156,5 @@ function SupportedWebsite(props) {
 
 SupportedWebsite.propTypes = {
   website: PropTypes.string,
+  authenticated: PropTypes.bool,
 }
