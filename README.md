@@ -8,7 +8,7 @@ It shows that arbitrary websites can learn a visitor's recent and current browsi
 
 For authenticated visitors the demo can leak Google User IDs and profile pictures (if set).
 
-The supported browsers are Safari 15 on macOS, and all browsers on iOS and iPadOS 15. Other browsers and platforms are not affected.
+The affected browsers are Safari 15 on macOS, and all browsers on iOS and iPadOS 15. Other browsers and platforms are not affected.
 
 Read the [article](https://fingerprintjs.com/blog) for more information.
 
