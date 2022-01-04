@@ -9,38 +9,47 @@ export const KNOWN_WEBSITES = {
   'docs.google.com': {
     exact: [['GoogleDocs'], ['DocsErrors'], ['GoogleDriveDs']],
     authenticated: true,
+    reliable: false,
   },
   'calendar.google.com': {
     exact: [['offline.users']],
     startswith: [['offline.settings.'], ['offline.requests.']],
     authenticated: true,
+    reliable: true,
   },
   'mail.google.com': {
     exact: [['user_registry'], ['gmail-sw-keyval']],
     authenticated: true,
+    reliable: false,
   },
-  //'meet.google.com': {
-  //  exact: [['meet_db'], ['storage.bw.offline']],
-  //  authenticated: true,
-  //},
+  'meet.google.com': {
+    exact: [['meet_db'], ['storage.bw.offline']],
+    authenticated: true,
+    reliable: false,
+  },
   'drive.google.com': {
     exact: [['GoogleDriveDsImpressions'], ['dfesw-mss-cache-prod'], ['GoogleDriveDs']],
     startswith: [['storage.dfesw-']],
     authenticated: true,
+    reliable: false,
   },
   'developers.google.com': {
     exact: [['devsite-index-db']],
+    reliable: true,
   },
   'keep.google.com': {
     startswith: [['Keep-']],
     authenticated: true,
+    reliable: true,
   },
   'web.whatsapp.com': {
     exact: [['wawc'], ['__dbnames']],
+    reliable: true,
   },
   'netflix.com': {
     exact: [['netflix.player']],
     authenticated: true,
+    reliable: true,
   },
   'youtube.com': {
     exact: [['yt-serviceworker-metadata']],
@@ -51,94 +60,123 @@ export const KNOWN_WEBSITES = {
       ['yt-it-response-store:'],
       ['yt-player-local-media:'],
     ],
+    reliable: true,
   },
   'facebook.com': {
     exact: [['ServiceWorkerAsyncStorage']],
     authenticated: true,
+    reliable: false,
   },
   'instagram.com': {
     exact: [['redux']], // Likely unreliable.
+    reliable: true,
   },
   'app.slack.com': {
     exact: [['reduxPersistence']],
     authenticated: true,
+    reliable: true,
   },
   'twitter.com': {
     exact: [['sync'], ['localforage'], ['horizonweb']],
+    reliable: true,
   },
   'alibaba.com': {
     exact: [['flasher']],
+    reliable: true,
   },
   'vk.com': {
     exact: [['sw_keyval_db']],
+    reliable: true,
   },
   'dropbox.com': {
     exact: [['apexMetrics'], ['unused']],
+    reliable: true,
   },
   'anchor.fm': {
-    exact: [['adjust-sdk']],
+    exact: [['adjust-sdk'], ['anchor-website']],
+    reliable: true,
   },
   'huffingtonpost.com': {
     exact: [['a2a5c7f9-3fa0-4182-889a-15aa61acf59b']],
+    reliable: true,
   },
-  //'latimes.com': {
-  //  exact: [['68547f8f-2fd8-4ff3-9b63-51e86e2edee8']],
-  //},
+  'latimes.com': {
+    exact: [['68547f8f-2fd8-4ff3-9b63-51e86e2edee8']],
+    reliable: false,
+  },
   'theglobeandmail.com': {
     exact: [['6b6b990e-d9d8-4116-a028-76da837d7607']],
+    reliable: true,
   },
-  //'economist.com': {
-  //  exact: [['2a28082a-de31-45fd-a00c-548117e422f7']],
-  //},
+  'economist.com': {
+    exact: [['2a28082a-de31-45fd-a00c-548117e422f7']],
+    reliable: false,
+  },
   'rollingstone.com': {
-    exact: [['3d2fb0bd-52fc-4b75-aaf5-2d436c172540']],
+    exact: [['ONE_SIGNAL_SDK_DB'], ['3d2fb0bd-52fc-4b75-aaf5-2d436c172540']],
+    reliable: true,
   },
-  //'entrepreneur.com': {
-  //  exact: [['b611f626-25c2-4182-ad7f-50a0ba61117b']],
-  //},
-  //'foxnews.com': {
-  //    'exact': [['ACC', 'X3VhX3Nkazpxd1dXMHA1elRPaTdqUkRLVXZiSVdBOi8=:db']] // aswpsdkus.com, not opened in Safari
-  //},
+  'entrepreneur.com': {
+    exact: [['b611f626-25c2-4182-ad7f-50a0ba61117b']],
+    reliable: false,
+  },
+  'foxnews.com': {
+    exact: [['ACC', 'X3VhX3Nkazpxd1dXMHA1elRPaTdqUkRLVXZiSVdBOi8=:db']], // aswpsdkus.com, not opened in Safari
+    reliable: false,
+  },
   'bloomberg.com': {
     exact: [['bloomberg']],
+    reliable: true,
   },
   'cnet.com': {
     exact: [['firebaseLocalStorageDb', 'notifications']],
+    reliable: true,
   },
-  //'edition.cnn.com': {
-  //    'exact': [['wknd']] // wknd created by bounceenxchange.com (wunderkind.co)
-  //},
-  //'gizmodo.com': {
-  //    'exact': [['wknd']]
-  //},
-  //'indiegogo.com': {
-  //    'exact': [['theoplayer-cache-database']]
-  //},
+  'edition.cnn.com': {
+    exact: [['wknd']], // wknd created by bounceenxchange.com (wunderkind.co)
+    reliable: false,
+  },
+  'gizmodo.com': {
+    exact: [['wknd']],
+    reliable: false,
+  },
+  'indiegogo.com': {
+    exact: [['theoplayer-cache-database']],
+    reliable: true,
+  },
   'cbc.ca': {
     exact: [['cbc_storage']],
+    reliabe: true,
   },
   'stitcher.com': {
     exact: [['firebase-installations-database']],
+    reliable: true,
   },
   'pexels.com': {
     exact: [['AppboyServiceWorkerAsyncStorage']],
+    reliable: true,
   },
-  // 'venturebeat.com' : {
-  //     'exact': [['firebaseLocalStorageDb']]
-  // },
-  // 'pewresearch.org': {
-  //     'exact': [['firebaseLocalStorageDb']]
-  // }
+  'venturebeat.com': {
+    exact: [['firebaseLocalStorageDb']],
+    reliable: false,
+  },
+  'pewresearch.org': {
+    exact: [['firebaseLocalStorageDb', 'Braze IndexedDB Support Test']],
+    reliable: false,
+  },
 }
 
 export function SupportedWebsites() {
   return (
     <div className="websites">
-      {Object.getOwnPropertyNames(KNOWN_WEBSITES).map((website) => {
-        return (
-          <SupportedWebsite key={website} website={website} authenticated={KNOWN_WEBSITES[website].authenticated} />
-        )
-      })}
+      {Object.getOwnPropertyNames(KNOWN_WEBSITES)
+        .filter((website) => KNOWN_WEBSITES[website].reliable)
+        .sort()
+        .map((website) => {
+          return (
+            <SupportedWebsite key={website} website={website} authenticated={KNOWN_WEBSITES[website].authenticated} />
+          )
+        })}
     </div>
   )
 }
