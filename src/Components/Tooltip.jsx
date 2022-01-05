@@ -6,7 +6,7 @@ import 'tippy.js/themes/light.css'
 
 export default function Tooltip(props) {
   return (
-    <Tippy content={props.content} theme="light">
+    <Tippy content={props.content} theme="light" interactive="true">
       <span>
         <svg viewBox="0 0 34 34" tabIndex="0" className="tooltip-icon">
           <path d="M17 0a17 17 0 1017 17A17 17 0 0017 0zm0 2A15 15 0 112 17 15 15 0 0117 2z"></path>

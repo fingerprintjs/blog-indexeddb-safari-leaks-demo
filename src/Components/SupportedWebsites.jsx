@@ -156,10 +156,6 @@ export const KNOWN_WEBSITES = {
     exact: [['AppboyServiceWorkerAsyncStorage']],
     reliable: true,
   },
-  'venturebeat.com': {
-    exact: [['firebaseLocalStorageDb']],
-    reliable: false,
-  },
   'pewresearch.org': {
     exact: [['firebaseLocalStorageDb', 'Braze IndexedDB Support Test']],
     reliable: false,
