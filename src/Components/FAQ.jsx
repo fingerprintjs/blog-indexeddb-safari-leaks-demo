@@ -13,19 +13,17 @@ export default function FAQ() {
         <a href="https://webkit.org/" target="_blank" rel="noreferrer">
           WebKit
         </a>{' '}
-        (a browser engine primarily used in Safari, as well as all iOS and iPadOS web browsers).
+        (a browser engine primarily used in Safari, as well as all iOS and iPadOS web browsers). You can test this demo
+        on all affected browsers: Safari 15 on macOS, or any browser on iOS and iPadOS 15.
       </p>
       <p>
-        It shows that arbitrary websites can learn a visitor&apos;s recent and current browsing activity (websites
-        visited in different tabs or windows). For authenticated visitors the demo can leak Google User IDs and profile
-        pictures. The demo detects the following websites:
+        The demo illustrates how any website can learn a visitor&apos;s recent and current browsing activity (websites
+        visited in different tabs or windows) using this leak. For authenticated visitors, the demo can also leak Google
+        User IDs and profile pictures.
       </p>
+      <p>The demo detects the following websites:</p>
       <SupportedWebsites />
       <small>* Requires an authenticated session</small>
-      <p>
-        All users using Safari 15 on macOS, or any browser on iOS and iPadOS 15 are affected. Other browsers and
-        platforms are not affected.
-      </p>
     </section>
   )
 }

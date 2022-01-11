@@ -2,15 +2,13 @@
 
 ## Description
 
-This demo showcases information leaks resulting from an [IndexedDB same-origin policy violation](https://fingerprintjs.com/blog) in [WebKit](https://webkit.org/) (a browser engine primarily used in Safari, as well as all iOS and iPadOS web browsers).
+This demo showcases information leaks resulting from an [IndexedDB same-origin policy violation](https://fingerprintjs.com/blog) in [WebKit](https://webkit.org/) (a browser engine primarily used in Safari, as well as all iOS and iPadOS web browsers). You can test this demo on all affected browsers: Safari 15 on macOS, or any browser on iOS and iPadOS 15.
 
-It shows that arbitrary websites can learn a visitor's recent and current browsing activity (pages visited in different tabs or windows).
+The demo illustrates how any website can learn a visitor's recent and current browsing activity (pages visited in different tabs or windows) using this leak.
 
 For authenticated visitors the demo can leak Google User IDs and profile pictures (if set).
 
-The affected browsers are Safari 15 on macOS, and all browsers on iOS and iPadOS 15. Other browsers and platforms are not affected.
-
-Read the [article](https://fingerprintjs.com/blog) for more information.
+[Read our article](https://fingerprintjs.com/blog) for more information.
 
 ## Quick start
 

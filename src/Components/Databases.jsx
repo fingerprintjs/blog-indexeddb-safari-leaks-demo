@@ -54,12 +54,12 @@ export default function Databases({ googleIDs, isLoading }) {
     <>
       <section>
         <p>
-          Click any URL below to open the affected website in a new tab. After that switch back to this tab, and you
-          will see that the visited website is leaking and its presence is known to this demo page.
+          Click any URL below to open the affected website in a new tab. After that, switch back to this tab and you
+          will see that the visited website is known to this demo page.
         </p>
         <p>
           In Private Safari windows, browse to affected websites within the same tab. After returning to this demo page,
-          you will see that your recent browsing history is leaking.
+          you will see that your recent browsing history is known to this page via the leak.
         </p>
       </section>
       <Identifiers databases={[]} initialGoogleIDs={googleIDs} isLoading={isLoading} />
