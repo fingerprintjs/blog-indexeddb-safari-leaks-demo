@@ -113,7 +113,7 @@ export const KNOWN_WEBSITES = {
     reliable: false,
   },
   'rollingstone.com': {
-    exact: [['ONE_SIGNAL_SDK_DB'], ['3d2fb0bd-52fc-4b75-aaf5-2d436c172540']],
+    exact: [['3d2fb0bd-52fc-4b75-aaf5-2d436c172540']],
     reliable: true,
   },
   'entrepreneur.com': {
@@ -121,7 +121,7 @@ export const KNOWN_WEBSITES = {
     reliable: false,
   },
   'foxnews.com': {
-    exact: [['ACC', 'X3VhX3Nkazpxd1dXMHA1elRPaTdqUkRLVXZiSVdBOi8=:db']], // aswpsdkus.com, not opened in Safari
+    exact: [['X3VhX3Nkazpxd1dXMHA1elRPaTdqUkRLVXZiSVdBOi8=:db']],
     reliable: false,
   },
   'bloomberg.com': {
@@ -131,14 +131,6 @@ export const KNOWN_WEBSITES = {
   'cnet.com': {
     exact: [['firebaseLocalStorageDb', 'notifications']],
     reliable: true,
-  },
-  'edition.cnn.com': {
-    exact: [['wknd']], // wknd created by bounceenxchange.com (wunderkind.co)
-    reliable: false,
-  },
-  'gizmodo.com': {
-    exact: [['wknd']],
-    reliable: false,
   },
   'indiegogo.com': {
     exact: [['theoplayer-cache-database']],
@@ -159,6 +151,42 @@ export const KNOWN_WEBSITES = {
   'pewresearch.org': {
     exact: [['firebaseLocalStorageDb', 'Braze IndexedDB Support Test']],
     reliable: false,
+  },
+  'weather.com': {
+    exact: [['nerf-web'], ['wxu-web']],
+    reliable: true,
+  },
+  'nymag.com': {
+    exact: [['d2fb08da-1c03-4c8a-978f-ad8a96b4c31f']],
+    reliable: true,
+  },
+  'boston.com': {
+    exact: [['X3VhX3NkazpYSm9DR1cwR1JEaWV0Z0VoRVhwc0pnOi8=:db']],
+    reliable: true,
+  },
+  'xbox.com': {
+    exact: [['XCloudAppLogs']],
+    reliable: true,
+  },
+  'timeout.com': {
+    exact: [['67cbf6c5-d926-407b-a684-a0606570ff08']],
+    reliable: true,
+  },
+  'ctvnews.ca': {
+    exact: [['289d106c-df24-4cd9-a9fa-753e928c23ad']],
+    reliable: true,
+  },
+  'globalnews.ca': {
+    exact: [['f7e98148-cb09-4cf1-9b9f-b5aee3465d6e']],
+    reliable: true,
+  },
+  'standard.co.uk': {
+    exact: [['5d79bce7-5d2b-427e-a6c4-b89b6c7bf048']],
+    reliable: true,
+  },
+  'computerworld.com': {
+    exact: [['f5b3be27-f789-4ef1-8867-37c67da5b361']],
+    reliable: true,
   },
 }
 

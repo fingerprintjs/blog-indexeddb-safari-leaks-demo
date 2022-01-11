@@ -130,7 +130,7 @@ export default function Identifiers({ databases, initialGoogleIDs, isLoading }) 
   return googleIDs?.size > 0 ? (
     <>
       <section>
-        Your unique Google User ID{`${googleIDs.size > 1}` ? 's' : ''}: <Tooltip content={GOOGLE_TOOLTIP_TEXT} />
+        Your unique Google User ID{googleIDs.size > 1 ? 's' : ''}: <Tooltip content={GOOGLE_TOOLTIP_TEXT} />
         {Array.from(googleIDs).map((id) => {
           return <GoogleID key={id} googleid={id} />
         })}

@@ -69,7 +69,7 @@ export default function Databases({ googleIDs, isLoading }) {
       <section>
         <div>
           Your browser currently leaks <strong>{databases.length}</strong> database name
-          {`${databases.length > 1 ? 's' : ''}`}. <Tooltip content={`List of databases: ${databases.join(', ')}`} />
+          {databases.length > 1 ? 's' : ''}. <Tooltip content={`List of databases: ${databases.join(', ')}`} />
         </div>
         {websites.length > 0 && (
           <div className="subsection">

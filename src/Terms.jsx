@@ -1,11 +1,11 @@
 export default function Terms() {
   return (
-    <section>
+    <section className="terms">
       <h1>TERMS OF USE</h1>
       <p>
         These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of
         an entity (“you”) and FingerprintJS, Inc (“Company“, “we”, “us”, or “our”), concerning your access to and use of
-        the https://fingerprintjs.com website (further referred to collectively as the “Site”).
+        the https://safarileaks.com website (further referred to collectively as the “Site”).
       </p>
       <p>
         You agree that by accessing the Site, you have read, understood, and agreed to be bound by all of these Terms of

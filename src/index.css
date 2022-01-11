@@ -71,7 +71,7 @@ div.subsection {
     content: "•";
     padding: 0rem 0.8rem 0rem 1rem;
 }
-.faq {
+.faq, .terms {
     text-align: left;
 }
 .faq .websites {

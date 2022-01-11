@@ -24,6 +24,9 @@ export default function FAQ() {
       <p>The demo detects the following websites:</p>
       <SupportedWebsites />
       <small>* Requires an authenticated session</small>
+      <p>
+        This is not an exhaustive list. All websites that interact with the IndexedDB API can potentially be detected.
+      </p>
     </section>
   )
 }
