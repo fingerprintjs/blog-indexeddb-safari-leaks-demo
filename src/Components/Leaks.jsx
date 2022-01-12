@@ -43,7 +43,12 @@ export default function Leaks({ isAffectedBrowser }) {
 }
 
 function NotAffected() {
-  return <section>Good news, your current browser is not affected!</section>
+  return (
+    <div className="banner">
+      <b>Your browser is not affected. </b>
+      Please open this demo in <b>Safari 15 on macOS</b>, or any browser on <b>iOS and iPadOS 15</b>.
+    </div>
+  )
 }
 
 Leaks.propTypes = {

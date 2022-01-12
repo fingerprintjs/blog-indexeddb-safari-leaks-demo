@@ -25,7 +25,8 @@ export default function FAQ() {
       <SupportedWebsites />
       <small>* Requires an authenticated session</small>
       <p>
-        This is not an exhaustive list of affected websites. All websites that interact with the IndexedDB API can potentially be detected.
+        This is not an exhaustive list of affected websites. All websites that interact with the IndexedDB API can
+        potentially be detected.
       </p>
     </section>
   )

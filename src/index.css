@@ -62,6 +62,13 @@ section {
 div.subsection {
     margin-top: 10px;
 }
+.banner {
+    color: white;
+    background-color: #434875;
+    width: 100%;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
 .footer {
     border-top: 1px solid #E3E3ED;
     margin-top: -1rem;

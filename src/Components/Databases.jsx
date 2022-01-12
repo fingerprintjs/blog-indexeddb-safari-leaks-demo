@@ -52,7 +52,7 @@ export default function Databases({ googleIDs, isLoading }) {
 
   return databases?.length === 0 ? (
     <>
-      <section>
+      <section className="banner">
         <p>
           Click any URL below to open the affected website in a new tab. After that, switch back to this tab and you
           will see that the visited website is known to this demo page.
