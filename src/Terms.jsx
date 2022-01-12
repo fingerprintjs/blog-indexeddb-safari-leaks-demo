@@ -22,11 +22,6 @@ export default function Terms() {
         Site for any illegal or unauthorized purpose; and (6) your use of the Site will not violate any applicable law
         or regulation.
       </p>
-      <p>
-        If you provide any information that is untrue, inaccurate, not current, or incomplete, we have the right to
-        suspend or terminate your account and refuse any and all current or future use of the Site (or any portion
-        thereof).
-      </p>
       <h1>GOVERNING LAW</h1>
       <p>
         These Terms of Use and your use of the Site are governed by and construed in accordance with the laws of the

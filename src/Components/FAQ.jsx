@@ -18,7 +18,7 @@ export default function FAQ() {
       </p>
       <p>
         The demo illustrates how any website can learn a visitor&apos;s recent and current browsing activity (websites
-        visited in different tabs or windows) using this leak. For authenticated visitors, the demo can also leak Google
+        visited in different tabs or windows) using this leak. For visitors, logged into Google services, this demo can also leak Google
         User IDs and profile pictures.
       </p>
       <p>The demo detects the following websites:</p>
