@@ -54,8 +54,8 @@ export default function Databases({ googleIDs, isLoading }) {
     <>
       <section className="banner">
         <p>
-          Click any URL below to open the affected website in a new tab. After that, switch back to this tab and you
-          will see that the visited website is known to this demo page.
+          Click any URL below to open the affected website in a new tab. Keep the new tab open, switch back to this tab
+          and you will see that the visited website is known to this demo page.
         </p>
         <p>
           In Private Safari windows, browse to affected websites within the same tab. After returning to this demo page,

@@ -6,7 +6,11 @@ export default function FAQ() {
       <h1>What is this vulnerability and who is affected?</h1>
       <p>
         This demo showcases information leaks resulting from an{' '}
-        <a href="https://fingerprintjs.com/blog" target="_blank" rel="noreferrer">
+        <a
+          href="https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15"
+          target="_blank"
+          rel="noreferrer"
+        >
           IndexedDB same-origin policy violation
         </a>{' '}
         in{' '}
@@ -18,8 +22,8 @@ export default function FAQ() {
       </p>
       <p>
         The demo illustrates how any website can learn a visitor&apos;s recent and current browsing activity (websites
-        visited in different tabs or windows) using this leak. For visitors, logged into Google services, this demo can also leak Google
-        User IDs and profile pictures.
+        visited in different tabs or windows) using this leak. For visitors, logged into Google services, this demo can
+        also leak Google User IDs and profile pictures.
       </p>
       <p>The demo detects the following websites:</p>
       <SupportedWebsites />

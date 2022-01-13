@@ -12,7 +12,7 @@ export default function Footer() {
         </a>
       </span>
       <span>
-        <a href="https://fingerprintjs.com/blog">
+        <a href="https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15">
           <strong>Article</strong>
         </a>
       </span>

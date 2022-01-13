@@ -8,10 +8,9 @@ import App from './App'
 import Terms from './Terms'
 
 const root = document.getElementById('root')
-const base = location.pathname
 
 render(
-  <BrowserRouter basename={base}>
+  <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/terms" element={<Terms />} />
