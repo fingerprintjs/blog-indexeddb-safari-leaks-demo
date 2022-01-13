@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import Databases from './Databases'
 import { fetchGoogleIDs } from './Google/Identifiers'
+import Instructions from './Instructions'
 
 const TERMS_ACCEPTED_KEY = 'accepted-terms'
 
@@ -39,14 +40,18 @@ export default function Leaks({ isAffectedBrowser }) {
     )
   }
 
-  return <Databases googleIDs={googleIDs} isLoading={isPopupActive} />
+  return (
+    <>
+      <Instructions />
+      <Databases googleIDs={googleIDs} isLoading={isPopupActive} />
+    </>
+  )
 }
 
 function NotAffected() {
   return (
     <div className="banner">
-      <b>Your browser is not affected. </b>
-      Please open this demo in <b>Safari 15 on macOS</b>, or any browser on <b>iOS and iPadOS 15</b>.
+      Your browser is not affected. Please open this demo in Safari 15 on macOS, or any browser on iOS and iPadOS 15.
     </div>
   )
 }

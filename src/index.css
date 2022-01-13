@@ -62,9 +62,19 @@ section {
 div.subsection {
     margin-top: 10px;
 }
+details {
+    text-align: left;
+    background: #f2f2f7;
+    padding: .5rem 1rem;
+}
+summary {
+    cursor: pointer;
+}
+summary > * {
+    display: inline;
+}
 .banner {
-    color: white;
-    background-color: #434875;
+    background-color: #f2f2f7;
     width: 100%;
     padding: 10px 10px;
     box-sizing: border-box;
