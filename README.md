@@ -8,7 +8,7 @@ The demo illustrates how any website can learn a visitor's recent and current br
 
 For authenticated visitors the demo can leak Google User IDs and profile pictures (if set).
 
-[Read our article](https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15) for more information.
+[Read our article](https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15) or watch our [screencast on YouTube](https://www.youtube.com/watch?v=Z7dPeGpCl8s) for more information.
 
 ## Quick start
 
