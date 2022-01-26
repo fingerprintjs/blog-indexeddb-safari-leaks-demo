@@ -5,6 +5,7 @@ import Leaks from './Components/Leaks'
 import Logo from './Components/Logo'
 
 import Footer from './Components/Footer'
+import Updates from './Components/Updates'
 
 function isAffectedBrowser() {
   const ios = navigator.userAgent.includes('iPhone OS 15')
@@ -57,6 +58,7 @@ export default function App() {
     <>
       <Logo />
       <h1>Safari 15 IndexedDB Leaks</h1>
+      <Updates />
       <Leaks isAffectedBrowser={isAffectedBrowser()} />
       <FAQ />
       <Footer />

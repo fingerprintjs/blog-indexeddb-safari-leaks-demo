@@ -62,7 +62,7 @@ section {
 div.subsection {
     margin-top: 10px;
 }
-details {
+details, .updates {
     text-align: left;
     background: #f2f2f7;
     padding: .5rem 1rem;
