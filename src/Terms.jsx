@@ -83,7 +83,7 @@ export default function Terms() {
       <p>
         FingerprintJS, Inc
         <br />
-        oss@fingerprintjs.com
+        oss@fingerprint.com
       </p>
     </section>
   )

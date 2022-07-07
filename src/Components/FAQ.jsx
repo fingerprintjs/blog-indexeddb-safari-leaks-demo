@@ -7,7 +7,7 @@ export default function FAQ() {
       <p>
         This demo showcases information leaks resulting from an{' '}
         <a
-          href="https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15"
+          href="https://fingerprint.com/blog/indexeddb-api-browser-vulnerability-safari-15"
           target="_blank"
           rel="noreferrer"
         >
