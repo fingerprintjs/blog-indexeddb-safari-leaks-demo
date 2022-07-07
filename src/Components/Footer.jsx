@@ -2,8 +2,8 @@ export default function Footer() {
   return (
     <section className="footer">
       <span>
-        <a href="https://fingerprintjs.com/">
-          <strong>FingerprintJS</strong>
+        <a href="https://fingerprint.com/">
+          <strong>Fingerprint</strong>
         </a>
       </span>
       <span>
@@ -12,7 +12,7 @@ export default function Footer() {
         </a>
       </span>
       <span>
-        <a href="https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15">
+        <a href="https://fingerprint.com/blog/indexeddb-api-browser-vulnerability-safari-15">
           <strong>Article</strong>
         </a>
       </span>

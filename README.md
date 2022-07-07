@@ -2,13 +2,13 @@
 
 ## Description
 
-This demo showcases information leaks resulting from an [IndexedDB same-origin policy violation](https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15) in [WebKit](https://webkit.org/) (a browser engine primarily used in Safari, as well as all iOS and iPadOS web browsers). You can test this demo on all affected browsers: Safari 15 on macOS, or any browser on iOS and iPadOS 15.
+This demo showcases information leaks resulting from an [IndexedDB same-origin policy violation](https://fingerprint.com/blog/indexeddb-api-browser-vulnerability-safari-15) in [WebKit](https://webkit.org/) (a browser engine primarily used in Safari, as well as all iOS and iPadOS web browsers). You can test this demo on all affected browsers: Safari 15 on macOS, or any browser on iOS and iPadOS 15.
 
 The demo illustrates how any website can learn a visitor's recent and current browsing activity (pages visited in different tabs or windows) using this leak.
 
 For authenticated visitors the demo can leak Google User IDs and profile pictures (if set).
 
-[Read our article](https://fingerprintjs.com/blog/indexeddb-api-browser-vulnerability-safari-15) or watch our [screencast on YouTube](https://www.youtube.com/watch?v=Z7dPeGpCl8s) for more information.
+[Read our article](https://fingerprint.com/blog/indexeddb-api-browser-vulnerability-safari-15) or watch our [screencast on YouTube](https://www.youtube.com/watch?v=Z7dPeGpCl8s) for more information.
 
 ## Quick start
 
